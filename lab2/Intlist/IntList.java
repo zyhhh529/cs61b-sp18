@@ -82,13 +82,25 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
 
-        IntList poi = A;
-
-        while(poi.rest != null){
-            poi = poi.rest;
+//        if(A==null){
+//            A = B;
+//            return A;
+//        }
+//
+//        IntList poi = A;
+//
+//        while(poi.rest != null){
+//            poi = poi.rest;
+//        }
+//        poi.rest = B;
+//        return A;
+        if (A == null) {
+            A = B;
+            return A;
+        } else {
+            A.rest = IntList.dcatenate(A.rest, B);
+            return A;
         }
-        poi.rest = B;
-        return A;
     }
 
     /**
@@ -96,20 +108,13 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        IntList ohead = new IntList(A.first,null);
-        IntList opoi = ohead;
-        IntList oripoi = A.rest;
-
-        while (oripoi != null){
-            opoi.rest = new IntList(oripoi.first,null);
-            opoi = opoi.rest;
-            oripoi = oripoi.rest;
+        if (A == null) {
+            return B;
+        } else {
+            return new IntList(A.first, catenate(A.rest, B));
         }
-        opoi.rest = B;
-
-        return ohead;
-
     }
+
 
 
 
