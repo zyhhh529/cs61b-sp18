@@ -76,7 +76,7 @@ public class NBody{
 			double x_vel = in.readDouble();
 			double y_vel = in.readDouble();
 			double plan_mass = in.readDouble();
-			String pic_name = "images/" + in.readString();
+			String pic_name = in.readString();
 
 			Planet p = new Planet(x_cor, y_cor, x_vel, y_vel, plan_mass, pic_name);
 			planArr[num-i] = p;
